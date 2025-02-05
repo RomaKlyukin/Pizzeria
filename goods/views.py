@@ -1,4 +1,13 @@
 from django.shortcuts import render
 
+from goods.models import Products
+
 def catalog(request):
-    return render(request, 'goods/catalog.html')
+
+    products = Products.objects.all()
+
+    context = {
+        'title': 'Pizzeria - Каталог',
+        'products': products,
+    }
+    return render(request, 'goods/catalog.html', context)

@@ -1,0 +1,86 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 1,
+        "fields": {
+            "name": "Пепперони",
+            "slug": "pepperoni",
+            "description": "Состав: красный соус, моцарелла, острый перец, пепперони, томаты",
+            "image": "",
+            "price": "800.00",
+            "discount": "0.00",
+            "diameter": 33,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 2,
+        "fields": {
+            "name": "Гавайская",
+            "slug": "gavajskaya",
+            "description": "Состав: ананасы, белый соус, курица в соусе терияки, моцарелла",
+            "image": "",
+            "price": "800.00",
+            "discount": "10.00",
+            "diameter": 33,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "4 Сыра",
+            "slug": "4-syra",
+            "description": "Состав: базилик, дорблю, моцарелла, пармезан, сливочный сыр, сырный соус",
+            "image": "",
+            "price": "800.00",
+            "discount": "0.00",
+            "diameter": 33,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "Грибная",
+            "slug": "gribnaya",
+            "description": "Состав: грибной соус, моцарелла, орегано, шампиньоны",
+            "image": "",
+            "price": "780.00",
+            "discount": "0.00",
+            "diameter": 33,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 5,
+        "fields": {
+            "name": "Куриная",
+            "slug": "kurinaya",
+            "description": "Состав: белый соус, курица, лук, моцарелла, орегано",
+            "image": "",
+            "price": "770.00",
+            "discount": "0.00",
+            "diameter": 33,
+            "category": 2
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 6,
+        "fields": {
+            "name": "Маргарита",
+            "slug": "margarita",
+            "description": "Состав: дорблю, красный соус, моцарелла, орегано, томаты",
+            "image": "",
+            "price": "720.00",
+            "discount": "0.00",
+            "diameter": 33,
+            "category": 2
+        }
+    }
+]

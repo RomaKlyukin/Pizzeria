@@ -1,0 +1,34 @@
+[
+    {
+        "model": "goods.categories",
+        "pk": 1,
+        "fields": {
+            "name": "Все товары",
+            "slug": "all"
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 2,
+        "fields": {
+            "name": "Пиццы",
+            "slug": "piccy"
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 3,
+        "fields": {
+            "name": "Напитки",
+            "slug": "napitki"
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 4,
+        "fields": {
+            "name": "Закуски",
+            "slug": "zakuski"
+        }
+    }
+]
