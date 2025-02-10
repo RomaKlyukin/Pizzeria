@@ -11,7 +11,6 @@ def index(request):
     context = {
         'title': 'Pizzeria - Главная',
         'content': 'Доставка пиццы PIZZERIA',
-        "categories": categories
     }
     return render(request, 'main\index.html', context)
 
