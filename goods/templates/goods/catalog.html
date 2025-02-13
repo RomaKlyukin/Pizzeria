@@ -51,6 +51,15 @@
                 <button type="submit" class="btn btn-primary mx-3 mt-3">Применить</button>
             </form>
         </div>
+
+        {% if request.GET.q %}
+        <h3 class="mt-4" style="color: orange">Результаты поиска по запросу {{ request.GET.q }}</h3>
+        {% if not goods %}
+            <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+            <h2 class="mt-4" style="color: orange">По запросу ничего не найдено</h2>
+        {% endif %}
+        {% endif %}
+
         {% for product in goods %}
             <!-- Карта товара -->
             <div class="col-lg-4 col-md-6 p-4">
@@ -62,8 +71,24 @@
                         <img src="{% static "deps/images/Not found image.png" %}" class="card-img-top" alt="...">
                     {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title text-white text-center text-uppercase">{{product.name}}</h5>
-                        <p class="card-text text-white fst-italic">{{product.description}}</p>
+                        <h5 class="card-title text-white text-center text-uppercase">
+                            {% autoescape off %}
+                                {% if product.headline %}
+                                {{ product.headline }}
+                                {% else %}
+                                {{ product.name }}
+                                {% endif %}
+                            {% endautoescape %}
+                        </h5>
+                        <p class="card-text text-white fst-italic">
+                            {% autoescape off %}
+                                {% if product.bodyline %}
+                                {{ product.bodyline }}
+                                {% else %}
+                                {{ product.description }}
+                                {% endif %}
+                            {% endautoescape %}
+                        </p>
                         <br>
                         <p class="product_id">id: {{ product.display_id }}</p>
                         <div class="d-flex justify-content-between text-white">
@@ -89,31 +114,35 @@
         {% endfor %}
     </div>
     <!-- Пагинация -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center my-4">
-            <div class="custom-shadow d-flex">
-                <li class="page-item {% if not goods.has_previous %} disabled {% endif %} ">
-                    <a class="page-link" href="{% if goods.has_previous %}?{% change_params page=goods.previous_page_number %}
-                    {% else %} #
-                    {% endif %}">Назад</a>
-                </li>
 
-                {% for page in goods.paginator.page_range %}
-                    {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
-                        <li class="page-item {% if goods.number == page %} active {% endif %}">
-                            <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
+    {% if goods %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center my-4">
+                <div class="custom-shadow d-flex">
+                    <li class="page-item {% if not goods.has_previous %} disabled {% endif %} ">
+                        <a class="page-link" href="{% if goods.has_previous %}?{% change_params page=goods.previous_page_number %}
+                        {% else %} #
+                        {% endif %}">Назад</a>
+                    </li>
 
-                <li class="page-item {% if not goods.has_next %} disabled {% endif %} ">
-                    <a class="page-link" href="{% if goods.has_next %}?{% change_params page=goods.next_page_number %}
-                    {% else %} #
-                    {% endif %}">Следующая</a>
-                </li>
-            </div>
-        </ul>
-    </nav>
+                    {% for page in goods.paginator.page_range %}
+                        {% if page >= goods.number|add:-2 and page <= goods.number|add:2 %}
+                            <li class="page-item {% if goods.number == page %} active {% endif %}">
+                                <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    <li class="page-item {% if not goods.has_next %} disabled {% endif %} ">
+                        <a class="page-link" href="{% if goods.has_next %}?{% change_params page=goods.next_page_number %}
+                        {% else %} #
+                        {% endif %}">Следующая</a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    {% endif %}
+
 {% endblock content %}
 
 {% block footer %}
